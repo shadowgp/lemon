@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>C</title>
+    <script>
+        window.alert("我也不懂为什么要写这个，就是想写而已。");
+        window.alert("I miss you");
+        //操作HTML元素
+        function getP(){
+            document.getElementById("p").innerHTML="我来找P，我只是来测试一下。";
+        }
+
+    </script>
 </head>
 <body>
 <h3>C</h3>
 
+<p id="p">我是P标签</p>
+<br/>
+
+<button onclick="getP()">寻找P势力</button>
+
 <button onclick="myFun()">C</button><br/><br/>
+<p id="demo"></p>
 <script>
     function myFun(){
         document.write(Date());
     }
-    myFun()
+    myFun();
+
+    a=5;
+    b=6;
+    c=a + b;
+    console.log(c);
+    console.log("我想看一下效果！console.log()");
+    document.getElementById("demo").innerHTML = '这里是P,PPP的P';
 </script>
 </body>
 </html>
