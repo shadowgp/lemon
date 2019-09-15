@@ -1,0 +1,41 @@
+<!DOCTYPE html>   <!--  H5 的头都是这么写的， <!DOCTYPE html>  -->
+<html lang="en">  <!-- 这里是语言选项  "en"  是英文 -->
+<head><!--  head   html的头文件  -->
+    <meta charset="UTF-8">    <!--  这里是字符编码, chatset="UTF-8"  -->
+    <title>LearnJSBase</title> <!--  标签标题  -->
+
+    <!-- 这里是注释！！！  //  这个也是注释   -->
+
+    <script> // javascript的script标签，所有的脚本语言必须在script里才能运行。
+        alert("Test"); //输出 1:alert()   警告式提示。    Window.alert();   是一个window对象。
+
+
+
+    </script>
+
+</head>
+<body> <!--  body  html的主体部分  -->
+    <!--  输出 -->
+    <p id="firstC" >P</p>
+    <script>
+        document.write(Date());  //输出当前系统时间日期，如果这里的语句放在head标签里，并不会显示在页面。也可以new Date()
+
+        console.log(Date());  //输出信息到浏览器的控制台。
+
+        document.getElementById("firstC").innerHTML = "这里是输出测试 document";  //这里不能放在head不然找不到P标签而报错。
+
+    </script>
+
+    <!-- 语法 -->  <!-- JavaScript 使用 Unicode 字符集。 -->
+    <!-- JavaScript 是大小写敏感的 -->
+    <script>
+        //字面量:数字(Number)、字符串(String)、表达式(9+2,5*20)
+        var a = [10 , 20 ,30 , 40 , 50]; //这是一个数组
+        var a1 = new Array("Saab","Volvo","BMW");
+
+        var b = {firstName:"C",lastName:"Y"}; //这是一个对象
+        function myFunction(C , Y){ return C * Y}; //这是一个函数，方法，function
+
+    </script>
+</body>
+</html>
