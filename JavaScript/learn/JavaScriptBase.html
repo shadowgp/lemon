@@ -7,7 +7,7 @@
     <!-- 这里是注释！！！  //  这个也是注释   -->
 
     <script> // javascript的script标签，所有的脚本语言必须在script里才能运行。
-        alert("Test"); //输出 1:alert()   警告式提示。    Window.alert();   是一个window对象。
+        //alert("Test"); //输出 1:alert()   警告式提示。    Window.alert();   是一个window对象。
 
 
 
@@ -37,5 +37,93 @@
         function myFunction(C , Y){ return C * Y}; //这是一个函数，方法，function
 
     </script>
+
+    <!-- javascript:void  -->
+    <script type="text/javascript">
+        function getValue(){
+            var a,b,c;
+            a = void(b = 5,c = 7);
+            document.write('a =' + a + 'b = ' + b + ' c = ' + c);
+        }
+
+
+    </script>
+    <br>
+    <input type="button" value="点我看看！" onclick="getValue()" />
+    <br>
+    <!-- <input type="button" value="看看效果！" onclick="javascript:void(0)" />  -->
+    <br>
+    <a href="javascript:void(0)" >这是一个什么死链？</a>
+<br>
+
+    <a href="#firstC" >我只是想回去！</a>
+    <!-- 变量名：采用驼峰命名法 iLoveYou IMissYou -->
+
+    <!-- 空格与运算符: 运算符前后必须有空格 -->
+    <!-- 代码缩进:Tab制表符必须是4个空格 -->
+    <!-- 语句规则：一条语句通常以分号作为结束符 -->
+    <!-- 复杂语句通用规则：
+                            将左花括号放在第一行的结尾
+                            左花括号前添加一个空格
+                            将右花括号独立放在一行
+                            不要以分号结束一个复杂的声明
+     -->
+    <!-- 函数:
+        function toCelsius(fahrenheit) {
+            return (5 / 9) * (fahrenheit - 32);
+        }
+        循环：
+        for (i = 0; i < 5; i ++) {
+            x += i;
+        }
+        条件语句：
+        if (time < 20) {
+            greeting = "Good day";
+        } else {
+            greeting = "Good evening";
+        }
+
+    -->
+    <!-- 对象定义的规则：
+                        将左花括号与类名放在同一行
+                        冒号与属性间有个空格
+                        字符串使用双引号，数字不需要
+                        最后一个属性-值对后面不要添加逗号
+                        将右花括号独立放在一行，并以分号作为结束符号
+    实例：
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 50,
+            eyeColor: "blue"
+        };
+
+    //短的对象也可以写成一行
+    实例：
+    var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+    -->
+
+    <!-- 每行代码字符小于80，为了便于阅读，每行字符建议小于80个字符。
+        如果一个JavaScript语句超过了80个字符，建议在运算符或者逗号后换行
+        实例：
+            document.getElementById("demo").innerHTML =
+                "Hello world";
+
+
+    -->
+
+    <!--  命名规则：
+                    变量和函数为小驼峰法标识，即除第一个单词之外，其他单词首字母大写
+                    全局变量为大写（UPPERCASE）
+                    常量（如PI） 为大写(UPPERCASE)
+    -->
+
+    <!-- HTML载入外部JavaScript文件
+        使用简洁的格式载入JavaScript文件(type属性不是必须的):
+        <script src="myscript.js">
+
+        使用小写的文件名。i miss you
+    -->
+
 </body>
 </html>

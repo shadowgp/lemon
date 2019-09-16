@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript函数</title>
+</head>
+<body>
+    <!-- JavaScript函数定义
+            JavaScript使用关键字function定义函数
+            函数可以通过声明定义，也可以是一个表达式
+       函数声明
+
+                function functionName(parameters) {
+                    执行的代码
+                }
+       函数声明后不会立即执行，会在我们需要的时候调用到。
+
+       实例：
+            function myFunction(a, b) {
+                return a * b;
+            }
+        注：分号是用来分隔可执行JavaScript语句，由于函数声明不是一个可执行语句，所以不以分号结束。
+
+        函数表达式：
+
+        实例：
+                var x = function (a, b) {return a * b);
+
+        在函数表达式存储在变量后，变量也可作为一个函数使用：
+
+        实例：  //匿名函数
+                var x = function (a, b) {return a * b);
+                var z = x(3, 4);
+
+        注：在JavaScript中，很多时候，我们需要避免使用 new  关键字。
+
+    -->
+
+    <!-- 函数提升 (Hoisting)
+                提升(Hoisting) 是JavaScript默认将当前作用域提升到前面去的行为。
+                提升(Hoisting)应用在变量的声明与函数的声明。因此函数可以在声明之前调用
+                    myFunction(5);
+
+                    function myFunction(y) {
+                        return y * y;
+                    }
+         使用表达式定义函数时无法提升
+    -->
+
+    <!-- 自调用函数
+            函数表达式可以"自调用"
+            自调用表达式会自动调用
+            如果表达式后面紧跟(),则会自动调用
+            不能自动调用声明的函数
+            通过添加括号，来说明它是一个函数表达式
+
+        例：  //实际上是一个匿名自我调用的函数(没有函数名)
+            (function () {
+                var x = "Hello!!";  //我将调用自己
+            })();  //紧跟着 ()
+
+        JavaScript函数可作为一个值使用：
+        实例：
+            function myFunction(a, b) {
+                return a * b;
+            }
+            var x = myFunction(3, 4);
+
+        JavaScript函数可作为表达式使用：
+        实例：
+            function myFunction (a, b) {
+                return a * b;
+            }
+            var x = myFunction(3, 5) * 2;
+
+
+        函数是对象  ： typeof function () {};
+        实例：
+            function myFunction(a, b) {
+                return arguments.length;  //arguments.length属性将返回函数调用过程接收到的参数个数
+            }
+
+            function myFunction(a, b) {
+                return a * b;
+            }
+            var txt = myFunction.toString(); //toString()方法将函数作为一个字符串返回
+    -->
+
+    <!-- 箭头函数
+        (参数1,参数2,...,参数N) => { 函数声明 }
+        (参数1,参数2,...,参数N) => 表达式(单一)
+        //相当于：(参数1,参数2,...,参数N) =>{ return 表达式; }
+
+        当只有一个参数时，圆括号是可选的：
+        (单一参数) => {函数声明}
+        单一参数 => {函数声明}
+
+        没有参数的函数应该写成一对圆括号
+        () => {函数声明}
+
+        实例：
+                //ES5
+                var x = function() {
+                    return x * y;
+                }
+                //ES6
+                const x = (x, y) => x * y;
+
+
+         const x = (x, y) => { return x * y };
+
+    -->
+
+    <!-- JavaScript函数参数:
+        函数显式参数(Parameters)与隐式参数(Arguments)
+        显式函数
+            functionName(parameter1, parameter2,parameter3) {
+                //要执行的代码......
+            }
+
+        参数规则
+                JavaScript函数定义显式参数时没有指定数据类型
+                JavaScript函数对隐式参数没有进行类型检测
+                JavaScript函数对隐式参数个数没有进行检测
+
+        默认参数： ES5 中如果函数在调用时未提供隐式参数，参数会默认设置为:undefined
+                    有时这是可以接受的，但是建议最好为参数设置一个默认值：
+
+                    实例：ES5
+                        function myFunction(x, y) {
+                            if (y === undefined) {
+                                y = 0;
+                            }
+                        }
+                    或者列简单点：
+                    实例：ES5
+                        function myFunction(x, y) {
+                            y = y || 0;  //如果y已经定义，y || 返回 y,因为 y 是true,否则返回0，因为undefined 为 false。
+
+                        }
+
+    -->
+    <!-- ES6函数可以自带参数
+        ES6支持函数带有默认参数，就判断undefined 和 || 的操作：
+        实例：
+            function myFunction(x, y = 10) {
+                // y is 10 if not passed or undefined
+                return x + y;
+            }
+            myFunction(0,2);//输出2
+            myFunction(5);//输出15，y参数的默认值
+    -->
+
+    <!-- arguments 对象
+        JavaScript函数有个内置对象 arguments对象
+        argument对象包含了函数调用的参数数组
+
+        通过这种方式可以很方便的找到最大的一个参数的值：
+        实例：
+            x = findMax(1, 123, 500, 115, 44, 88);
+            function findMax() {
+                var i, max = arguments[0];
+
+                if(arguments.length < 2) return max;
+
+                for (i = 0; i < arguments.length; i ++) {
+                    if (arguments.[i] > max) {
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            }
+
+        或者创建一个函数用来统计所有数值的和：
+        实例：
+            x = sumAll(1, 123, 500, 115, 44, 88);
+            function sumAll() {
+                var i, sum = 0;
+                for (i = 0; i < arguments.length; i ++) {
+                    sum += arguments.[i];
+                }
+                return sum;
+            }
+
+    -->
+
+    <!-- 通过值传递参数
+        在函数中调用的参数是函数的隐式参数
+        JavaScript隐式参数通过值来传递：函数仅仅只是获取值
+        如果函数修改参数的值，不会修改显式参数的初始值(在函数外定义)
+        隐式参数的改变在函数外是不可见的
+
+        通过对象传递参数
+
+            在JavaScript中，可以引用对象的值
+            因此我们在函数内部修改对象的属性就会修改其初始的值
+            修改对象属性可作用于函数外部(全局变量)
+            修改对象属性在函数外是可见的
+    -->
+    <!-- JavaScript 函数调用
+
+    -->
+
+
+
+</body>
+</html>
