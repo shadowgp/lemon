@@ -198,10 +198,129 @@
             修改对象属性在函数外是可见的
     -->
     <!-- JavaScript 函数调用
+        JavaScript 函数有4种调用方式。每种方式的不同在于this的初始化。
+        this 关键字   -- 一般而言，在JavaScript中，this指向函数执行时的当前对象。
+        注：this是保留关键字，你不能修改this的值
+
+        函数中的代码在函数被调用后执行:
+        作为一个函数调用
+        实例：
+            function myFunction(a, b) {
+                return a * b;
+            }
+
+            myFunction(10, 2);   //返回20
+
+            页面对象也是window对象
+            window.myFunction(10, 2);
+
+            注：
+                函数作为全局对象调用，会使this的值成为全局对象
+                使用window对象作为一个变量容易造成程序崩溃
+
+            函数作为方法调用
+            实例：
+                var myObject = {
+                    firstName: "John",
+                    lastName: "Doe",
+                    fullName: function () {
+                        return this.firstName + " " + this.lastName;
+                    }
+                }
+                myObject.fullName();    //返回 "John Doe"
+
+            实例：
+                var myObject = {
+                    firstName: "John",
+                    lastName: "Doe",
+                    fullName: function () {
+                        return this;
+                    }
+                }
+                myObject.fullName();    //返回 [object Object]
+                // 在一个对象方法中,this值是对象本身
+
+                注：函数作为对象方法调用，会使得this的值成为对象本身
+
+             作为函数方法调用函数
+             在JavaScript中，函数是对象。JavaScript函数有它的属性和方法。
+             call()和apply()是预定义的函数方法。两个方法可用于调用函数，两个方法第一个参数必须是对象本身
+             实例：
+                function myFunction(a, b) {
+                    return a * b;
+                }
+                myObject = myFunction.call(myObject, 10,2);   //返回20
+
+            实例：
+                function myFunction(a, b) {
+                    return a * b;
+                }
+                myArray = [10, 2];
+                myObject = myFunction.apply(myObject, myArray); //返回20
+
+            注：通过call()或apply() 方法你可以设置this的值，且作为已存在对象的新方法调用。
+    -->
+    <!-- JavaScript 闭包
+        JavaScript 变量可以是局部变量或全局变量
+        私有变量可以用到闭包
+        注：变量声明时如果不使用var关键字，那么它就是一个全局变量，即使它在函数内定义
+
+        计算器困境
+        设想下如果你想统计一些数值，且该计算器在所有函数中都是可用的。
+        你可以使用全局变量，函数设置计数器递增：
+        实例：
+            var counter = 0;
+            function add() {
+                return counter += 1;
+            }
+            add();
+            add();
+            add();   //此时数值是3
+
+            计数器数值在执行add()函数时发生变化。
+            但问题来了，页面上的任何脚本都能改变计数器，即便没有调用add()函数。
+            如果我在函数内声明计数器，如果没有调用函数将无法修改计数器的值：
+            实例：
+
+                function add() {
+                    var counter = 0;
+                    return counter += 1;
+                }
+                add();
+                add();
+                add();  //本来想输出3，但只是输出1.因为每次调用函数，counter的值都被初始化。
+                JavaScript内嵌函数可以解决该问题
+                所有函数都能访问全局变量。
+                实际上，在JavaScript中，所有函数都能访问它们上一层的作用域。
+                JavaScript支持嵌套函数。嵌套函数可以访问上一层的函数变量。
+                该实例中，内嵌函数plus()可以访问父函数的counter变量：
+                实例：
+                    function add() {
+                        var counter = 0;
+                        function plus() {counter += 1;}
+                        plus();
+                        return counter;
+                    }
+
+                JavaScript闭包
+                函数自我调用
+                实例：
+                    var add = (function (){
+                        var counter = 0;
+                        return function () {return counter += 1;}
+                    })();
+                    add();
+                    add();
+                    add();   //此时值为3
+
+                实例解析：变量add指定了函数自我调用的返回字值
+                            自我调用函数只执行一次。设置计数器为0.并返回函数表达式。
+                            add变量可以作为一个函数使用。非常棒的部分是它可以访问函数上一层作用域的计数器。
+                            这个叫作JavaScript闭包。它使得函数拥有私有变量变成可能。
+                            计数器受匿名函数的作用域保护，只能通过add方法修改。
 
     -->
 
 
-
-</body>
+</bdy>
 </html>
