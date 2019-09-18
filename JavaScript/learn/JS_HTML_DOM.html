@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript HTML DOM</title>
+</head>
+<body>
+
+<!--HTML DOM(文档对象模型)
+    通过HTML DOM，可以访问JavaScript HTML文档的所有元素
+    当网页加载时，浏览器会创建页面的文档对象模型(Document Object Model)
+    HTML DOM 模型被构造为对象的树
+        JavaScript 能够改变页面中的所有HTML元素
+        JavaScript 能够改变页面中的所有HTML属性
+        JavaScript 能够改变页面中的所有CSS样式
+        JavaScript 能够对页面中的所有事件做出反应
+
+        查找HTML元素
+            通过ID找到HTML元素
+                实例：
+                    var x = document.getElementById("intro");
+            通过标签名找到HTML元素
+                实例：  //本例查找ID="main"的元素，然后查找id="main"元素中所有的<p>元素
+                    var x = document.getElementById("main");
+                    var y = x.getElementsByTagName("p");
+            通过类名找到HTML元素
+                    var x = document.getElementsByClassName("intro");
+-->
+    <!-- JavaScript HTML DOM -改变HTML
+        改变 HTML 输出流
+        实例：
+            <script>
+                document.write(Date());
+            </script>
+
+        改变 HTML 内容
+        实例：
+            <p id = "p1"> Hello world! </p>
+            <script>
+                document.getElementById("p1").innerHTML = "我来，我见，我征服";
+            </script>
+
+        改变 HTML 属性    //document.getElementById(id).attribute=新属性值
+        实例：
+            <img id="image" src="smiley.gif">
+            <script>
+                document.getElementById("image").src="landscape.jpg";
+            </script>
+    -->
+
+    <!-- 改变 HTML  样式: document.getElementById(id).style.property=新样式;
+        实例：
+            <p id="p1">Hello world!</p>
+            <p id="p2">Hello world!</p>
+            <script>
+                document.getElementById("p2").style.color="blue";
+                document.getElementById("p2").style.fontFamily="Arial";
+                document.getElementById("p2").style.fontSize="larger";
+            </script>
+    -->
+
+    <!--使用事件
+        元素被点击
+        页面加载完成
+        输入框被修改
+
+        实例：
+            <h1 id="id1" >标题</p>
+            <button type="button" onclick="document.getElementById("id1").style.color='red'">测试</button>
+    -->
+    <!--HTML事件的例子：
+        当用户点击鼠标时    //onclick=JavaScript
+        当网页已加载时
+        当图像已加载时
+        当鼠标移动到元素时
+        当输入字段被修改时
+        当提交HTML表单时
+        当用户触发按键时
+
+        实例：从事件处理器调用一个函数
+            <script>
+                function changetext(id) {
+                    id.innerHTML = "Ooops!";
+                }
+            </script>
+            <h1 onclick="changetext(this)">点我,引爆！</h1>
+
+
+        HTML事件属性
+        实例：向button元素分配onclick事件
+            <button onclick="displayDate()">点这里！</button>
+
+        使用 HTML DOM 来分配事件
+        实例：
+            <script>
+                document.getElementById("myBtn").onclick=function(){displayDate()};
+            </script>
+
+        onload 和onunload 事件
+        实例：
+            <body onload="checkCookies()">
+            <script>
+                function checkCookies() {
+                    if (navigator.cookieEnabled==true){
+                        alert("Cookies 可用");
+                    }else{
+                        alert("Cookies 不可用");
+                    }
+                }
+            </script>
+
+        onchange 事件
+        onchange事件常结合对输入字段的验证来使用
+        实例：
+            <script>
+                function myFunction() {
+                    var x = document.getElementBuId("fname");
+                    x.value = x.value.toUpperCase();
+                }
+            </script>
+            <input type="text" id="fname" onchange="upperCase()">
+
+        onmouseover和onmouseout事件
+        实例：
+            <div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:#D94A38;width:120px;height:20px;padding:40px;">Mouse Over Me</div>
+            <script>
+            function mOver(obj){
+                obj.innerHTML="Thank You"
+            }
+            function mOut(obj){
+                obj.innerHTML="Mouse Over Me"
+            }
+            </script>
+
+        onmousedown、onmouseup 以及 onclick 事件
+        实例：
+
+    -->
+
+</body>
+</html>
