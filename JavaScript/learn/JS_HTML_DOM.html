@@ -136,6 +136,189 @@
         实例：
 
     -->
+    <!-- JavaScript HTML DOM EventListener
+
+        addEventListener()方法
+        实例：
+            <button id="myBtn">点我</button>
+            <p id="p"></p>
+
+            <script>
+                document.getElementById("myBtn").addEventListener("click", displayDate);
+                function displayDate() {
+                    document.getElementById("p").innerHTML="改变的P";
+                }
+            </script>
+
+        语法：element.addEventListener(event, function, useCapture);
+            第一个参数是事件的类型(如"click" or "mousedown")
+            第二个参数是事件触发后调用的函数
+            第三个参数是个布尔值用于描述事件是冒泡还是捕获
+
+            注：不要使用"on"前缀。例如，使用"click",而不是使用"onclick"
+
+        向原元素添加事件句柄
+        实例：
+            <button id="myBtn">点我！</button>
+            <script>
+                document.getElementById("myBtn").addEventListener("click", function () {
+                    alert("Hello World");
+                });
+            </script>
+
+        实例：可以使用函数名来引用外部函数
+            <button id="myBtn">点我！</button>
+            <script>
+                document.getElementById("myBtn").addEventListener("click", myFunction);
+                function myFunction() {
+                    alert("Hello world!!!");
+                }
+            </script>
+
+        实例：向同一个元素添加多个事件句柄
+            element.addEventListener("mouseover", myFunction);
+            element.addEventListener("click", mySecondFunction);
+            element.addEventListener("mouseout", myThirdFunction);
+
+        实例：向Window对象添加事件句柄
+            window.addEventListener("resize", function() {
+                document.getElementById("demo").innerHTML= sometext;
+            });
+
+        传递参数
+        实例：当传递参数值时，使用“匿名函数”调用带参数的函数
+            element.addEventListener("click", function() { myFunction(p1, p2); });
+
+            <button id="myBtn">点我</button>
+            <p id="p"></p>
+
+            <script>
+                var p1 = 5;
+                var p2 = 7;
+                document.getElementById("myBtn").addEventListener("click", function() {
+                    myFunction(p1, p2);
+                });
+                function myFunction(a, b) {
+                    var result = a * b;
+                    document.getElementById("p").innerHTML = result;
+                }
+            </script>
+
+        事件冒泡或事件捕获？
+        事件传递有两种方式：冒泡与捕获。
+        事件传递定义了元素事件触发的顺序。 如果你将 <p> 元素插入到 <div> 元素中，用户点击 <p> 元素, 哪个元素的 "click" 事件先被触发呢？
+        在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素，即： <p> 元素的点击事件先触发，然后会触发 <div> 元素的点击事件。
+        在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： <div> 元素的点击事件先触发 ，然后再触发 <p> 元素的点击事件。
+        addEventListener() 方法可以指定 "useCapture" 参数来设置传递类型：
+
+        addEventListener(event, function, useCapture);
+        默认值为false，即冒泡传递，当值为true时，事件使用捕获传递。
+        实例：
+            document.getElementById("myDiv").addEventListener("click", myFunction, true);
+
+        removeEventListener()方法
+            removeEventListener() 方法移除由addEventListener()方法添加的事件句柄
+        实例：
+            element.removeEventListener("mousemove", myFunction);
+
+
+        实例：   跨浏览器解决方法
+
+            var x = document.getElementById("myBtn");
+            if (x.addEventListener) {   // 所有主流浏览器，除了IE 8 及更早版本浏览器
+                x.addEventListener("click", myFunction);
+            } else if (x.attachEvent) {     //IE 8 及更早版本的浏览器
+                x.attachEvent("onclick", myFunction);
+            }
+    -->
+
+    <!--JavaSctip HTML DOM元素(节点)
+        创建新的HTML元素(节点)-appendChild()
+        实例：
+            <div id="div1">
+            <p id="p1">这是一个段落</p>
+            <p id="p2">这是另一个段落</p>
+            </div>
+
+            <script>
+                var para = document.createElement("p"); //创建<p>元素
+                var node = document.createTextNode("这是一个新的段落");//为<p>元素创建一个新的文本节点
+                para.appendChild(node);//将文件节点添加到 <p>元素中
+
+                var element = document.getElementById("div1");  //找到div
+                element.appendChild(para);//把<p>元素添加到<div>里.  这里是添加到元素结尾的地方
+                    (or  element.insertBefore(para);  //把<p>添加到元素开始的地方。 )
+
+            </script>
+
+        移除已存在的元素   removeChild()
+        实例：
+            <div id="div1">
+            <p id="p1">这是一个段落</p>
+            <p id="p2">这是另一个段落</p>
+            </div>
+
+            <script>
+                var parent = document.getElementById("div1");
+                var child = document.getElementById("p1");
+                parent.removeChild(child);
+            </script>
+
+        以下代码是已知要查找的子元素，然后查找其父元素，再删除这个子元素（删除节点必须知道父节点）
+            var child = document.getElementById("p1");
+            child.parentNode.removeChild(child);
+
+        替换HTML元素-replaceChild()
+        实例：
+            <div id="div1">
+            <p id="p1">这是一个段落</p>
+            <p id="p2">这是另一个段落</p>
+            </div>
+
+            <script>
+                var para = document.createElement("div1");
+                var node = document.createTextNode("这是一个新的段落");
+                para.appendChild(node);
+
+                var parent = document.getElementById("div1");
+                var child = document.getElementById("p1");
+                paraent.replaceChild(para, child);  //替换？
+            </script>
+
+    -->
+
+    <!--JavaScript HTML DOM 集合(Collection)
+        HTMLCollection对象
+            getElementByTagName()方法返回HTMLCollection对象
+            HTMLCollection 对象类似包含HTML元素的一个数组
+        实例： 获取文档所有的<p>元素
+            var x = document.getElementByTagName("p");
+            //集合元素可以通过索引(以0为起始位置)来访问
+            y = x[1];//访问第二个<p>元素
+
+        HTMLCollection对象length属性
+        实例： HTMLCollection对象的length属性定义了集合中元素的数量
+            var myCollection = document.getElementByTagName("p");  //获取<p>元素的集合
+            document.getElementById("demo").innerHTML = myCollection.length;    //显示集合元素个数
+
+        注：HTMLCollection 不是一个数组！！！
+    -->
+    <!-- JavaScript HTML DOM节点列表
+        NodeList对象是一个从文档中获取的节点列表(集合)
+        NodeList对象类似HTMLCollection对象
+        一些旧版本浏览器中的方法(如：getElementByClassName())返回的是NodeList对象，而不是HTMLCollection对象
+        所有浏览器的childNodes属性返回的是NodeList对象
+        大部分浏览器的querySelectorAll()返回NodeList对象
+
+        实例： 以下代码选取了文档中所的<p>节点
+            var myNodeList = document.querySelectorAll("p");
+            //NodeList中的元素可以通过索引(以0为起始位置)来访问
+            y = myNodeList[1];   //访问第二个<p>元素
+            document.getElemntById("demo").innerHTML = myNodeList.length; //显示节点列表的元素个数
+
+
+    -->
+
 
 </body>
 </html>
